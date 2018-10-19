@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Test</title>
+    <link href="./index.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="nav">
+        <span id="carousel">CAROUSEL</span>
+        <span id="scroll">SCROLL</span>
+    </nav>
+
+        <div class="container">
+	                <input type="radio" id="i1" name="images" checked/>
+                <input type="radio" id="i2" name="images" />
+                <input type="radio" id="i3" name="images" />
+                <input type="radio" id="i4" name="images"  />
+                <input type="radio" id="i5" name="images"  />
+
+                <div class="slide_img" id="one">			
+                        
+                        <img src="https://www.learnetic.com/wp-content/uploads/2016/10/london-city.jpg">
+                        
+                            <label class="prev" for="i4"><span></span></label>
+                            <label class="next" for="i2"><span></span></label>	
+                    
+                </div>
+                
+                <div class="slide_img" id="two">
+                    
+                        <img src="https://media.timeout.com/images/103042848/630/472/image.jpg" >
+                        
+                            <label class="prev" for="i1"><span></span></label>
+                            <label class="next" for="i3"><span></span></label>
+                    
+                </div>
+                        
+                <div class="slide_img" id="three">
+                        <img src="https://secure.i.telegraph.co.uk/multimedia/archive/02970/Tower-bridge_A4E7H_2970668b.jpg">	
+                        
+                            <label class="prev" for="i2"><span></span></label>
+                            <label class="next" for="i4"><span></span></label>
+                </div>
+            
+            
+                <div class="slide_img" id="four">
+                        <img src="https://imgs.classicfm.com/images/8920?width=2119&crop=16_9&signature=RCVHMR9pHG32DcF15liDZqhsBJs=">	
+                        
+                            <label class="prev" for="i3"><span></span></label>
+                            <label class="next" for="i1"><span></span></label>
+            
+                </div>
+
+                <div class="slide_img" id="five">
+                        <img src="https://www.theshaftesbury.com/blog/wp-content/uploads/2015/12/London-as-the-Londoners-do.jpg">	
+                        
+                            <label class="prev" for="i4"><span></span></label>
+                            <label class="next" for="i1"><span></span></label>
+            
+                </div>
+            
+                <div id="nav_slide">
+                    <label for="i1" class="dots" id="dot1"></label>
+                    <label for="i2" class="dots" id="dot2"></label>
+                    <label for="i3" class="dots" id="dot3"></label>
+                    <label for="i4" class="dots" id="dot4"></label>
+                    <label for="i5" class="dots" id="dot5"></label>
+                </div>
+                    
+            </div>
+            <div class='sometext'> 
+                <div><h3>Welcome to Visit London.</h3></div> 
+                Your official city guide to London, England. Find things to do in London, days out in London, London attractions and sightseeing, what's on, London events, theatre, tours, restaurants and hotels in London. Plan your trip to London with useful traveller information.
+                London is the capital of Great Britain, its political, economic and cultural centre. It’s one of the largest cities in the world. Its population is more than 9 million people. London is situated on the river Thames. It was founded more than two thousand years ago.
+
+                London is an ancient city. It appeared at the place where the Roman invaders decided to build a bridge over the Thames. There are four parts in London: West End, East End, the City and Westminster.
+
+                The City is the oldest part of London, its financial and business centre. There are many offices, companies and banks in this part of the capital. The heart of the City is the Stock Exchange. The Tower of London and St Paul’s Cathedral are situated in the City.
+
+                Westminster is also important part of the capital. It’s the administrative centre of London. The Houses of Parliament, the seat of the British Government, are there. Opposite the Houses of Parliament is Westminster Abbey where kings and queens have been crowned and many famous people were buried. The Houses of Parliament are often referred to as the Palace of Westminster.
+
+                The Towers of the Houses of Parliament stand high above the city. On the highest tower there is the largest clock in the country, Big Ben. Big Ben strikes every quarter of an hour.
+
+                To the west of Westminster is West End, the richest part of London. It is full of luxury hotels, super-markets, cinemas and concert-halls. In the centre of the West End the Trafalgar Square is situated with the famous statue of Lord Nelson.
+                To the east of Westminster is East End, an industrial district of the capital. Most of plants and factories are situated there.
+
+                The official London residence of the Queen is Buckingham Palace. The palace was built in 1703 by the Duke Buckingham. The daily ceremony of the Changing of the Guard takes place in its courtyard.
+
+                There are many museums in London. For example, the British Museum, the Natural History Museum, the Science Museum. The British Museum is the biggest museum in London. The museum is famous for its library — one of the richest in the world.
+
+                There are many beautiful parks in London. St James’s Park, Green Park, Hyde Park, and Kensington Gardens are linked together and form above 300 hectares of parkland in the heart of London.
+                To the west of Westminster is West End, the richest part of London. It is full of luxury hotels, super-markets, cinemas and concert-halls. In the centre of the West End the Trafalgar Square is situated with the famous statue of Lord Nelson.
+                To the east of Westminster is East End, an industrial district of the capital. Most of plants and factories are situated there.
+
+                The official London residence of the Queen is Buckingham Palace. The palace was built in 1703 by the Duke Buckingham. The daily ceremony of the Changing of the Guard takes place in its courtyard.
+
+                There are many museums in London. For example, the British Museum, the Natural History Museum, the Science Museum. The British Museum is the biggest museum in London. The museum is famous for its library — one of the richest in the world.
+            </div>
+            
+          
+            <script>
+                    onload  = start;
+                    let interval = null
+                    function start(){	
+                    let i = 1;
+                    function Move(){ 	
+                        i = (i%5)+1;
+                        document.getElementById('i'+i).checked = true;
+                        console.log(1)
+                    }
+                    interval = setInterval(Move,4000);
+                    }
+                    const carousel = document.getElementById('carousel')
+                    const scroll = document.getElementById('scroll')
+                    const container = document.getElementsByClassName('container')[0]
+                    const sometext = document.getElementsByClassName('sometext')[0]
+
+                    carousel.onclick = (ev)=> {
+                        carousel.classList.toggle('hover')
+                        scroll.classList.toggle('hover')
+                        container.classList.toggle('none')
+                        sometext.classList.toggle('none')
+                        start()
+                        }
+                    scroll.onclick = (ev) => {
+                        carousel.classList.toggle('hover')
+                        scroll.classList.toggle('hover')
+                        container.classList.toggle('none')
+                        sometext.classList.toggle('none')
+                        clearInterval(interval)
+                    }
+            </script>
+</body>
+</html>
