@@ -20,7 +20,7 @@ body{
 --green: #4CAF50;
 --magenta: #F44336;
 --grey:#5c5b5a;
---balu: rgb(158, 229, 231, .2);
+--balu: rgb(158, 229, 231);
 --yellow: rgb(248, 232, 2);
 --nav_color: rgba(255, 82, 82, .2);
 --nav_hover_color: rgba(255, 82, 82, .5);
@@ -48,10 +48,10 @@ body{
 	color:var(--black);
 }
 #carousel{
-	color:var(--black);
+	color:var(--grey);
 }
 #carousel.hover{
-	color:var(--grey);
+	color:var(--black);
 }
 #scroll.hover{
 	color:var(--black);
@@ -73,7 +73,10 @@ body{
 .container input {
 		display: none;
 	}
-
+.prev span,
+.next span{
+	z-index: -10;
+}
 .container .slide_img {
 		position: absolute;
 		width: 100%;
@@ -225,14 +228,18 @@ body{
 }
 @media screen and (max-width: 425px) {
 	.sometext{
-		font-size: 4.5vmin
+		font-size: 4.5vmin;
 		}
 	.nav span{
 		font-size: 5.5vmin;
 		}
+	.nav{
+		height:10vmin;
+	}
 	.sometext{
 		margin:0;
 		width:100vw;	
 	}
 	
 }
+

@@ -9,23 +9,23 @@
 </head>
 <body>
     <nav class="nav">
-        <span id="carousel">CAROUSEL</span>
+        <span id="carousel" class="hover">CAROUSEL</span>
         <span id="scroll">SCROLL</span>
     </nav>
 
         <div class="container">
-	                <input type="radio" id="i1" name="images" checked/>
+	            <input type="radio" id="i1" name="images" checked/>
                 <input type="radio" id="i2" name="images" />
                 <input type="radio" id="i3" name="images" />
-                <input type="radio" id="i4" name="images"  />
-                <input type="radio" id="i5" name="images"  />
+                <input type="radio" id="i4" name="images" />
+                <input type="radio" id="i5" name="images" />
 
                 <div class="slide_img" id="one">			
                         
                         <img src="https://www.learnetic.com/wp-content/uploads/2016/10/london-city.jpg">
                         
-                            <label class="prev" for="i4"><span></span></label>
-                            <label class="next" for="i2"><span></span></label>	
+                            <label class="prev" for="i5"><span for="i5"></span></label>
+                            <label class="next" for="i2"><span for="i2"></span></label>	
                     
                 </div>
                 
@@ -33,32 +33,32 @@
                     
                         <img src="https://media.timeout.com/images/103042848/630/472/image.jpg" >
                         
-                            <label class="prev" for="i1"><span></span></label>
-                            <label class="next" for="i3"><span></span></label>
+                            <label class="prev" for="i1"><span for="i1"></span></label>
+                            <label class="next" for="i3"><span for="i3"></span></label>
                     
                 </div>
                         
                 <div class="slide_img" id="three">
                         <img src="https://secure.i.telegraph.co.uk/multimedia/archive/02970/Tower-bridge_A4E7H_2970668b.jpg">	
                         
-                            <label class="prev" for="i2"><span></span></label>
-                            <label class="next" for="i4"><span></span></label>
+                            <label class="prev" for="i2"><span for="i2"></span></label>
+                            <label class="next" for="i4"><span for="i4"></span></label>
                 </div>
             
             
                 <div class="slide_img" id="four">
                         <img src="https://imgs.classicfm.com/images/8920?width=2119&crop=16_9&signature=RCVHMR9pHG32DcF15liDZqhsBJs=">	
                         
-                            <label class="prev" for="i3"><span></span></label>
-                            <label class="next" for="i1"><span></span></label>
+                            <label class="prev" for="i3"><span for="i3"></span></label>
+                            <label class="next" for="i5"><span for="i5"></span></label>
             
                 </div>
 
                 <div class="slide_img" id="five">
                         <img src="https://www.theshaftesbury.com/blog/wp-content/uploads/2015/12/London-as-the-Londoners-do.jpg">	
                         
-                            <label class="prev" for="i4"><span></span></label>
-                            <label class="next" for="i1"><span></span></label>
+                            <label class="prev" for="i4"><span for="i4"></span></label>
+                            <label class="next" for="i1"><span for="i1"></span></label>
             
                 </div>
             
@@ -102,36 +102,56 @@
             
           
             <script>
-                    onload  = start;
-                    let interval = null
-                    function start(){	
+                 
+                    const carousel = document.getElementById('carousel');
+                    const scroll = document.getElementById('scroll');
+                    const container = document.getElementsByClassName('container')[0];
+                    const sometext = document.getElementsByClassName('sometext')[0];
+                                      
+                    let interval = null;
                     let i = 1;
-                    function Move(){ 	
-                        i = (i%5)+1;
-                        document.getElementById('i'+i).checked = true;
-                        console.log(1)
-                    }
-                    interval = setInterval(Move,4000);
-                    }
-                    const carousel = document.getElementById('carousel')
-                    const scroll = document.getElementById('scroll')
-                    const container = document.getElementsByClassName('container')[0]
-                    const sometext = document.getElementsByClassName('sometext')[0]
 
-                    carousel.onclick = (ev)=> {
-                        carousel.classList.toggle('hover')
-                        scroll.classList.toggle('hover')
-                        container.classList.toggle('none')
-                        sometext.classList.toggle('none')
-                        start()
+                    const start = (dotnumber) =>{	
+                    i = dotnumber;
+                        const Move = () =>{ 	
+                            i = (i%5)+1;
+                            document.getElementById('i'+i).checked = true;
                         }
-                    scroll.onclick = (ev) => {
-                        carousel.classList.toggle('hover')
-                        scroll.classList.toggle('hover')
-                        container.classList.toggle('none')
-                        sometext.classList.toggle('none')
-                        clearInterval(interval)
+                    interval = setInterval(Move,3000);
                     }
+                   
+                    
+                    container.addEventListener("click", event => {
+                        if(!event.target.hasAttribute("for")) return;
+                        i =Number(event.target.getAttribute("for").slice(1,2));
+                        clearInterval(interval);
+                        start(i);
+                     
+                    })
+
+                    carousel.addEventListener("click", event => {
+                       if(event.target.classList.contains("hover")) return ;
+
+                        carousel.classList.toggle('hover');
+                        scroll.classList.toggle('hover');
+
+                        container.classList.toggle('none');
+                        sometext.classList.toggle('none');
+                        clearInterval(interval);
+                        start(i);
+                        })
+
+                    scroll.addEventListener("click", event => {
+                        if(event.target.classList.contains("hover")) return;
+                         
+                        carousel.classList.toggle('hover');
+                        scroll.classList.toggle('hover');
+
+                        container.classList.toggle('none');
+                        sometext.classList.toggle('none');
+                        clearInterval(interval);
+                    })
+                    onload  = start(1);
             </script>
 </body>
 </html>
