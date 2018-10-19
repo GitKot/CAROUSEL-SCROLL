@@ -45,16 +45,16 @@ body{
 	cursor:pointer;
 }
 .nav span:hover{
-	color:var(black);
+	color:var(--black);
 }
 #carousel{
-	color:var(black);
+	color:var(--black);
 }
 #carousel.hover{
 	color:var(--grey);
 }
 #scroll.hover{
-	color:var(black);
+	color:var(--black);
 }
 .container.none{
 	display:none;
